@@ -219,8 +219,8 @@
     <!-- Unity loaders -->
     <script src="models/UnityBuild_NN1/WebGL_NN1_Build4.loader.js"></script>
     <script src="models/UnityBuild_NN2/WebGL_NN2_Build2.loader.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/dist/tf.min.js"></script>
-    <script defer src="app_models.js"></script>
+
+
 
     <script>
         // NN1
@@ -250,11 +250,36 @@
 
     <!-- Form (AJAX) – NOTE: replace endpoints later -->
 
+
+
+    <script>
+        (async () => {
+            // wait model
+            await NN1Ready;
+
+            // enable button when model is ready
+            const btn = document.getElementById('run-btn');
+            if (btn) btn.disabled = false;
+
+            // hook button
+            btn?.addEventListener('click', async () => {
+                const vals = [...document.querySelectorAll('#predict-form input[type=number]')]
+                    .map(i => Number(i.value || 0));
+                const y = await predictNN1(vals);
+                const cut = String(y.toFixed(2));
+                document.getElementById("ml-result-container").innerHTML =
+                    `<div id="predicted-cut" data-prediction="${cut}" class="lead">Predicted cut: ${cut} in</div>`;
+                window.unityInstance?.SendMessage("CutPositionManager", "ReceivePrediction", cut);
+            });
+        })();
+    </script>
+
+
     <script>
         document.getElementById("predict-form").addEventListener("submit", async (e) => {
             e.preventDefault();
-            if (!NN1) { alert("Model loading…"); return; }
-            const vals = [...new FormData(e.target).values()].map(Number); // 7 inputs
+            await NN1Ready;                         // ensure loaded
+            const vals = [...new FormData(e.target).values()].map(Number);
             const y = await predictNN1(vals);
             const cut = String(y.toFixed(2));
             document.getElementById("ml-result-container").innerHTML =
@@ -290,6 +315,25 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/dist/tf.min.js"></script>
+    <script src="/app_models.js?v=6"></script>
+
+    <script>
+        document.getElementById("predict-form").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            await NN1Ready;                                // ensures model loaded
+            const vals = [...new FormData(e.target).values()].map(Number);
+            const y = await window.predictNN1(vals);       // <-- global function
+            const cut = y.toFixed(2);
+            document.getElementById("ml-result-container").innerHTML =
+                `<div id="predicted-cut" data-prediction="${cut}" class="lead">Predicted cut: ${cut} in</div>`;
+            if (window.unityInstance) unityInstance.SendMessage("CutPositionManager", "ReceivePrediction", cut);
+        });
+    </script>
+
+
+
 </body>
 
 </html>
