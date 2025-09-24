@@ -9,7 +9,7 @@
     <!-- libs -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
 <body>
@@ -168,15 +168,15 @@
                             <label for="input7" class="input-label">22in Probe</label>
                             <div class="input-group">
                                 <button class="btn btn-secondary btn-sm" type="button"
-                                    onclick="adjustInput('input5',1000)">▲</button>
+                                    onclick="adjustInput('input7',1000)">▲</button>
                                 <button class="btn btn-secondary btn-sm" type="button"
-                                    onclick="adjustInput('input5',100)">▲</button>
-                                <input id="input5" name="input5" class="form-control" type="number" step="any" value="0"
+                                    onclick="adjustInput('input7',100)">▲</button>
+                                <input id="input7" name="input7" class="form-control" type="number" step="any" value="0"
                                     min="0" max="20000">
                                 <button class="btn btn-secondary btn-sm" type="button"
-                                    onclick="adjustInput('input5',-100)">▼</button>
+                                    onclick="adjustInput('input7',-100)">▼</button>
                                 <button class="btn btn-secondary btn-sm" type="button"
-                                    onclick="adjustInput('input5',-1000)">▼</button>
+                                    onclick="adjustInput('input7',-1000)">▼</button>
                             </div>
                         </div>
                     </div>
@@ -210,7 +210,7 @@
             </div>
 
             <div class="text-center my-4">
-                <img src="images/psi_gradient.png" alt="NN2 Output Visualization" style="max-width:50%;height:auto;">
+                <img src="assets/img/psi_gradient.png" alt="NN2 Output Visualization" style="max-width:50%;height:auto;">
             </div>
 
         </div>
@@ -224,7 +224,7 @@
 
     <script>
         // NN1
-        let unityInstance = null;
+        window.unityInstance = null;
         createUnityInstance(document.querySelector("#unityContainer"), {
             dataUrl: "models/UnityBuild_NN1/WebGL_NN1_Build4.data",
             frameworkUrl: "models/UnityBuild_NN1/WebGL_NN1_Build4.framework.js",
@@ -232,11 +232,11 @@
             companyName: "YourCompany",
             productName: "YourProduct",
             productVersion: "1.0"
-        }).then(i => { unityInstance = i; console.log("Unity NN1 loaded"); })
+        }).then(i => { window.unityInstance = i; console.log("Unity NN1 loaded"); })
             .catch(e => console.error("Unity NN1 failed:", e));
 
         // NN2
-        let unityInstance2 = null;
+        window.unityInstance2 = null;
         createUnityInstance(document.querySelector("#unityContainer2"), {
             dataUrl: "models/UnityBuild_NN2/WebGL_NN2_Build2.data",
             frameworkUrl: "models/UnityBuild_NN2/WebGL_NN2_Build2.framework.js",
@@ -244,7 +244,7 @@
             companyName: "YourCompany",
             productName: "NN2 Viewer",
             productVersion: "1.0"
-        }).then(i => { unityInstance2 = i; console.log("Unity NN2 loaded"); })
+        }).then(i => { window.unityInstance2 = i; console.log("Unity NN2 loaded"); })
             .catch(e => console.error("Unity NN2 failed:", e));
     </script>
 
@@ -252,85 +252,14 @@
 
 
 
-    <script>
-        (async () => {
-            // wait model
-            await NN1Ready;
-
-            // enable button when model is ready
-            const btn = document.getElementById('run-btn');
-            if (btn) btn.disabled = false;
-
-            // hook button
-            btn?.addEventListener('click', async () => {
-                const vals = [...document.querySelectorAll('#predict-form input[type=number]')]
-                    .map(i => Number(i.value || 0));
-                const y = await predictNN1(vals);
-                const cut = String(y.toFixed(2));
-                document.getElementById("ml-result-container").innerHTML =
-                    `<div id="predicted-cut" data-prediction="${cut}" class="lead">Predicted cut: ${cut} in</div>`;
-                window.unityInstance?.SendMessage("CutPositionManager", "ReceivePrediction", cut);
-            });
-        })();
-    </script>
-
-
-    <script>
-        document.getElementById("predict-form").addEventListener("submit", async (e) => {
-            e.preventDefault();
-            await NN1Ready;                         // ensure loaded
-            const vals = [...new FormData(e.target).values()].map(Number);
-            const y = await predictNN1(vals);
-            const cut = String(y.toFixed(2));
-            document.getElementById("ml-result-container").innerHTML =
-                `<div id="predicted-cut" data-prediction="${cut}" class="lead">Predicted cut: ${cut} in</div>`;
-            if (window.unityInstance) unityInstance.SendMessage("CutPositionManager", "ReceivePrediction", cut);
-        });
-
-
-
-        function adjustInput(id, inc) {
-            const el = document.getElementById(id);
-            const v = (parseFloat(el.value) || 0) + inc;
-            el.value = Math.min(20000, Math.max(0, v));
-        }
-
-        function setCase(values) {
-            values.forEach((v, i) => {
-                const el = document.getElementById(`input${i + 1}`);
-                if (el) el.value = v;
-            });
-        }
-
-        function runNN2() {
-            const cutEl = document.getElementById("predicted-cut");
-            const cutValue = cutEl ? cutEl.getAttribute("data-prediction") : "12.3";
-            // Placeholder: no backend. Send empty array to Unity NN2.
-            if (unityInstance2) {
-                const data = []; // replace with real stress field later
-                unityInstance2.SendMessage("WebDataReceiver", "ReceiveStressData", JSON.stringify(data));
-            }
-        }
-    </script>
+    <!-- Inline handlers and helpers centralized in external scripts -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/dist/tf.min.js"></script>
-    <script src="/app_models.js?v=6"></script>
-
-    <script>
-        document.getElementById("predict-form").addEventListener("submit", async (e) => {
-            e.preventDefault();
-            await NN1Ready;                                // ensures model loaded
-            const vals = [...new FormData(e.target).values()].map(Number);
-            const y = await window.predictNN1(vals);       // <-- global function
-            const cut = y.toFixed(2);
-            document.getElementById("ml-result-container").innerHTML =
-                `<div id="predicted-cut" data-prediction="${cut}" class="lead">Predicted cut: ${cut} in</div>`;
-            if (window.unityInstance) unityInstance.SendMessage("CutPositionManager", "ReceivePrediction", cut);
-        });
-    </script>
+    <script src="assets/js/app_models.js?v=6"></script>
+    <script src="assets/js/app.js?v=3"></script>
 
 
 

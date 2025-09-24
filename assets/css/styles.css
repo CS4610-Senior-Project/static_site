@@ -1,0 +1,187 @@
+/* styles.css (moved into assets/css/) */
+body {
+	font-family: 'Montserrat', sans-serif;
+	background-color: #ffffff;
+	color: #000000;
+}
+
+.navbar-custom {
+	background: url("../img/cpp_campus.png") no-repeat center center;
+	background-size: cover;
+	position: relative;
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+	color: white !important;
+	text-shadow:
+		-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
+}
+
+.content-wrapper {
+	background-color: #ffffff;
+	margin: 45px auto;
+	padding: 45px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	border-radius: 10px;
+	max-width: 1200px;
+}
+
+.container {
+	padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: "Roboto Mono", monospace;
+}
+
+.navbar-custom .navbar-brand {
+	display: flex;
+	align-items: center
+}
+
+.navbar-custom .navbar-brand img {
+	margin-right: 10px
+}
+
+.navbar-custom .navbar-nav .nav-link {
+	margin-right: 15px
+}
+
+.slider {
+	height: 150px;
+	width: 100px;
+	transform: rotate(270deg);
+}
+
+.slider-container {
+	margin-top: 20px
+}
+
+.slider-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	margin: 10px;
+	padding: 5px;
+	background-color: #fff;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	border-radius: 10px;
+	transition: transform 0.3s ease
+}
+
+.slider-wrapper:hover {
+	transform: translateY(-5px)
+}
+
+.slider-label {
+	margin-bottom: 5px;
+	font-weight: bold;
+	font-size: 1em
+}
+
+.slider-value {
+	font-size: 1em
+}
+
+.btn-up,
+.btn-down {
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	border-radius: 3px;
+	padding: 5px 10px;
+	margin: 5px;
+	cursor: pointer;
+	font-size: 0.9em;
+	transition: background-color 0.3s ease
+}
+
+.btn-up:hover,
+.btn-down:hover {
+	background-color: #0056b3
+}
+
+#setValuesBtn,
+button[type="submit"] {
+	padding: 15px 30px;
+	font-size: 1.2em;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	display: block;
+	margin: 0 auto
+}
+
+#setValuesBtn {
+	background-color: #007bff;
+	color: #fff;
+	margin-top: 20px
+}
+
+#setValuesBtn:hover {
+	background-color: #0056b3
+}
+
+button[type="submit"] {
+	background-color: #28a745;
+	color: #fff;
+	margin-top: 20px
+}
+
+button[type="submit"]:hover {
+	background-color: #218838
+}
+
+.input-container {
+	display: flex;
+	flex-wrap: nowrap;
+	gap: 12px;
+	justify-content: center
+}
+
+.input-wrapper {
+	text-align: center
+}
+
+.input-group {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 4px
+}
+
+.btn-secondary.btn-sm {
+	padding: 4px 8px;
+	height: 32px
+}
+
+input[type="number"].form-control {
+	width: 80px;
+	text-align: center
+}
+
+.input-group {
+	flex-direction: column
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0
+}
+
+input[type="number"] {
+	-moz-appearance: textfield
+}
