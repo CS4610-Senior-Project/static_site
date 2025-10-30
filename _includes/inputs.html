@@ -1,0 +1,76 @@
+
+{% assign lengths = site.data.probes.lengths %}
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<form id="predict-form">
+
+<div class="center my-4">
+	<h4>Select a Stress Scenario:</h4>
+	<div class="btn-group" role="group" aria-label="Case Presets">
+		{% for c in site.data.cases.cases %}
+		<button class="btn btn-outline-primary ml-1" type="button" onclick="setCase({{ c.values | jsonify }})">
+			{{ c.name }}
+		</button>
+		{% endfor %}
+	</div>
+</div>
+
+
+
+  
+    <div class="text-center">
+      <h4>Adjust Stress Values to See the Result:</h4>
+      <div class="input-container">
+
+
+        {% for L in lengths %}
+        {% assign i = forloop.index %}
+        
+        <div class="input-wrapper"> 
+          <label for="input{{ i }}" class="input-label">{{ L }}in Probe</label>
+          <div class="input-group">
+            <button type="button" class="btn btn-secondary btn-sm" 
+              onclick="adjustInput('input{{ i }}',1000)">▲</button>
+            <button type="button" class="btn btn-secondary btn-sm" 
+              onclick="adjustInput('input{{ i }}',100)">▲</button>
+
+            <input id="input{{ i }}" name="input{{ i }}" class="form-control"
+              type="number" step="any" value="0" min="0" max="20000">
+
+            <button type="button" class="btn btn-secondary btn-sm" 
+              onclick="adjustInput('input{{ i }}',-100)">▼</button>
+            <button type="button" class="btn btn-secondary btn-sm" 
+              onclick="adjustInput('input{{ i }}',-1000)">▼</button>
+          </div>
+        </div>
+        
+        {% endfor %}
+      
+
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-success run-btn">Run Machine Learning Model</button>
+  </form>
+
+<script>
+function setCase(values){
+  values.forEach((val, i) => {
+    const input = document.getElementById("input" + (i+1));
+    if(input) input.value = val;
+  });
+}
+function adjustInput(id, delta) {
+  const el = document.getElementById(id);
+  if (!el) return;
+
+  const min = Number(el.min || 0);
+  const max = Number(el.max || 1e9);
+  const current = Number(el.value || 0);
+  const next = Math.max(min, Math.min(max, current + delta));
+  el.value = next;
+}
+</script>
+

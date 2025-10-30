@@ -1,0 +1,27 @@
+.navbar-custom {
+  background: url("../img/cpp_campus.png") no-repeat center center;
+  background-size: cover;
+  position: relative;
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+  color: #fff;
+  text-shadow:
+    -1px -1px 0 #000,
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
+}
+
+.navbar-custom .navbar-brand {
+  display: flex;
+  align-items: center;
+}
+.navbar-custom .navbar-brand img {
+  margin-right: 10px;
+}
+.navbar-custom .nav-link {
+  margin-right: 15px;
+}
+
