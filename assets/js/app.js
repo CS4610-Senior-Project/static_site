@@ -1,17 +1,3 @@
-// UI glue (moved into assets/js/)
-function adjustInput(id, inc) {
-    const el = document.getElementById(id);
-    const v = (parseFloat(el.value) || 0) + inc;
-    el.value = Math.min(20000, Math.max(0, v));
-}
-
-function setCase(values) {
-    values.forEach((v, i) => {
-        const el = document.getElementById(`input${i + 1}`);
-        if (el) el.value = v;
-    });
-}
-
 async function onSubmitForm(e) {
     e.preventDefault();
     await NN1Ready;

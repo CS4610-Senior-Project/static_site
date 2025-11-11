@@ -52,25 +52,51 @@
       </div>
     </div>
 
-    <button type="submit" class="btn btn-success run-btn">Run Machine Learning Model</button>
+    <button type="submit" class="btn btn-success btn-lg my-4">Run Machine Learning Model</button>
   </form>
 
 <script>
 function setCase(values){
   values.forEach((val, i) => {
     const input = document.getElementById("input" + (i+1));
-    if(input) input.value = val;
+    if (input) input.value = val;
   });
 }
+
 function adjustInput(id, delta) {
   const el = document.getElementById(id);
   if (!el) return;
-
   const min = Number(el.min || 0);
   const max = Number(el.max || 1e9);
   const current = Number(el.value || 0);
-  const next = Math.max(min, Math.min(max, current + delta));
-  el.value = next;
+  el.value = Math.max(min, Math.min(max, current + delta));
+}
+
+// ← define the submit handler you referenced
+async function onSubmitForm(e) {
+  e.preventDefault(); // stop page reload
+  const form = e.currentTarget;
+  // collect all number inputs in order
+  const inputs = [...form.querySelectorAll('input[type="number"]')].map(i => +i.value);
+  // call your pipeline
+  await runPredict(inputs); // define this elsewhere
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('predict-form');
+  form.addEventListener('submit', onSubmitForm);
+
+  // Optional: disable submit until model loads
+  const submitBtn = form.querySelector('button[type="submit"]');
+  if (submitBtn && window.NN1Ready?.then) {
+    submitBtn.disabled = true;
+    window.NN1Ready.then(() => { submitBtn.disabled = false; });
+  }
+});
+
+// example stub; replace with your real model call
+async function runPredict(values) {
+  console.log('Inputs:', values);
+  // normalize → ORT session.run → render output
 }
 </script>
-
