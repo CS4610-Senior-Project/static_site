@@ -1,3 +1,11 @@
+---
+--- 
+const NN1_URL     = "{{ '/assets/ONNX/NN1_trained_model.onnx' | relative_url }}";
+const SCALER_URL  = "{{ '/assets/ONNX/NN1_scaler.json' | relative_url }}";
+const LOADER_URL  = "{{ '/assets/models/UnityBuild_NN1/WebGL_NN1_Build4.loader.js' | relative_url }}";
+const BUILD_BASE  = "{{ '/assets/models/UnityBuild_NN1' | relative_url }}";
+
+  
   let nn1Session = null;
   let nn1Scaler = null;
 
@@ -9,7 +17,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   async function loadNN1() {
     if (nn1Session) return nn1Session;
     console.log("Loading NN1 model...");
-    nn1Session = await ort.InferenceSession.create('/assets/ONNX/NN1_trained_model.onnx');
+  nn1Session = await ort.InferenceSession.create(NN1_URL);
     console.log("NN1 model loaded.");
     return nn1Session;
   }
@@ -17,7 +25,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   // Load the StandardScaler parameters (mean & scale)
   async function loadScaler() {
     if (nn1Scaler) return nn1Scaler;
-    const res = await fetch('/assets/ONNX/NN1_scaler.json');
+     const res = await fetch(SCALER_URL);
     nn1Scaler = await res.json();
     console.log("Scaler loaded:", nn1Scaler);
     return nn1Scaler;
@@ -71,11 +79,11 @@ window.addEventListener("DOMContentLoaded", async () => {
   }
 async function loadUnityNN1() {
   const script = document.createElement("script");
-  script.src = "/assets/models/UnityBuild_NN1/WebGL_NN1_Build4.loader.js";
+  script.src = LOADER_URL;
   document.body.appendChild(script);
   await new Promise(res => (script.onload = res));
 
-  const buildUrl = "/assets/models/UnityBuild_NN1";
+  const buildUrl = BUILD_BASE;
   const config = {
     dataUrl: buildUrl + "/WebGL_NN1_Build4.data",
     frameworkUrl: buildUrl + "/WebGL_NN1_Build4.framework.js",

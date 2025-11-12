@@ -1,3 +1,11 @@
+---
+---
+const NN3_URL       = "{{ '/assets/ONNX/NN3.onnx' | relative_url }}";
+const SCALER_X_URL  = "{{ '/assets/ONNX/scaler_X_nn3_noEng.json' | relative_url }}";
+const SCALER_Y_URL  = "{{ '/assets/ONNX/scaler_y_nn3_noEng.json' | relative_url }}";
+const NODE_CSV_URL  = "{{ '/assets/Node_Cords_40k.csv' | relative_url }}";
+
+
 let nn3Session = null;
 let scalerX = null;
 let scalerY = null;
@@ -13,24 +21,20 @@ const waitBevy = () => new Promise(r => {
 async function loadNN3() {
     if (nn3Session) return nn3Session;
     console.log("Loading NN3 model...");
-    nn3Session = await ort.InferenceSession.create('/assets/ONNX/NN3.onnx');
+    nn3Session = await ort.InferenceSession.create(NN3_URL);
     console.log("NN3 model loaded.");
     return nn3Session;
 }
 
 // Load normalization scalers
 async function loadNN3Scalers() {
-    if (scalerX && scalerY) return { scalerX, scalerY };
-
-    const [resX, resY] = await Promise.all([
-        fetch('/assets/ONNX/scaler_X_nn3_noEng.json').then(r => r.json()),
-        fetch('/assets/ONNX/scaler_y_nn3_noEng.json').then(r => r.json())
-    ]);
-
-    scalerX = resX;
-    scalerY = resY;
-    console.log("NN3 scalers loaded:", scalerX, scalerY);
-    return { scalerX, scalerY };
+  if (scalerX && scalerY) return { scalerX, scalerY };
+  const [resX, resY] = await Promise.all([
+    fetch(SCALER_X_URL).then(r => r.json()),
+    fetch(SCALER_Y_URL).then(r => r.json())
+  ]);
+  scalerX = resX; scalerY = resY;
+  return { scalerX, scalerY };
 }
 
 // Normalization helpers
@@ -69,11 +73,9 @@ function denormalizeOutput(val, idx = 0) {
 }
 
 async function fetchNodeCSV() {
-    // put your CSV in: static/data/Node_Cords_40k.csv
-    const res = await fetch('/assets/Node_Cords_40k.csv');
-    if (!res.ok) throw new Error('Failed to fetch Node_Cords_40k.csv');
-    const text = await res.text();
-    return text;
+  const res = await fetch(NODE_CSV_URL);
+  if (!res.ok) throw new Error('Failed to fetch Node_Cords_40k.csv');
+  return res.text();
 }
 
 function parseNodeCSV(text) {

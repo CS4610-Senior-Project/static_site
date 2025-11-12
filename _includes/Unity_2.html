@@ -1,12 +1,12 @@
 <script type="module">
-const m = await import('/bevy/simple_blocks.js');
+  const m = await import('{{ "assets/models/Bevy_2/simple_blocks.js" | relative_url }}');
 await m.default();         // or await m.default('/bevy/simple_blocks_bg.wasm')
 m.init_stress_inbox();
 window.__bevy = m;  
   // expose for your button
 
 </script>
-<script src="/assets/js/NN3.js"></script>
+<script src="{{ '/assets/js/NN3.js' | relative_url }}"></script>
 <div class="text-center my-3">
   <button class="btn btn-success btn-lg my-4" onclick="runNN3()">Generate Stress Field</button>
 </div>
