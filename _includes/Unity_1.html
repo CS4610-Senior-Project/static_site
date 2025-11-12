@@ -1,6 +1,7 @@
 <div id="ml-result-container" class="text-center my-4"></div>
 
 <!-- Unity NN1 -->
+  <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script> 
 
 <div class="text-center my-5">
 	<!-- Constrain the Unity canvas with a fixed-height wrapper to avoid resize loops -->
@@ -8,17 +9,7 @@
 		<canvas id="unityContainer" width="960" height="400" style="background:#000; display:block; width:100%; height:100%;"></canvas>
 	</div>
 </div>
-<script src="/assets/models/UnityBuild_NN1/WebGL_NN1_Build4.loader.js"></script>
 
-<script>
-	window.unityInstance = null;
-	createUnityInstance(document.querySelector("#unityContainer"), {
-		dataUrl: "/assets/models/UnityBuild_NN1/WebGL_NN1_Build4.data",
-		frameworkUrl: "/assets/models/UnityBuild_NN1/WebGL_NN1_Build4.framework.js",
-		codeUrl: "/assets/models/UnityBuild_NN1/WebGL_NN1_Build4.wasm",
-		companyName: "YourCompany",
-		productName: "YourProduct",
-		productVersion: "1.0"
-		}).then(i => { window.unityInstance = i; console.log("Unity NN1 loaded"); })
-		.catch(e => console.error("Unity NN1 failed:", e));
-</script>
+
+<script src="/assets/js/NN1.js"></script>
+

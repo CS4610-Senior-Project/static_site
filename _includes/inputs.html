@@ -22,14 +22,14 @@
   
     <div class="text-center">
       <h4>Adjust Stress Values to See the Result:</h4>
-      <div class="input-container">
+      <div class="input-container" id="inputContainer">
 
 
         {% for L in lengths %}
         {% assign i = forloop.index %}
         
         <div class="input-wrapper"> 
-          <label for="input{{ i }}" class="input-label">{{ L }}in Probe</label>
+          <label for="input{{ i }}" class="input-label">{{ L }} in Probe</label>
           <div class="input-group">
             <button type="button" class="btn btn-secondary btn-sm" 
               onclick="adjustInput('input{{ i }}',1000)">▲</button>
@@ -52,8 +52,11 @@
       </div>
     </div>
 
-    <button type="submit" class="btn btn-success btn-lg my-4">Run Machine Learning Model</button>
+    <button type="submit" class="btn btn-success btn-lg my-4" onclick="runNN1Prediction()">Run Machine Learning Model</button>
   </form>
+<div id="ml-result-container" class="text-center my-4"></div>
+
+
 
 <script>
 function setCase(values){
