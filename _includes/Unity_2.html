@@ -1,13 +1,14 @@
-<div class="text-center my-3">
-        <button class="btn btn-success btn-lg my-4" onclick="runNN2()">Generate Stress Field</button>
-      </div>
+<script type="module">
+const m = await import('/bevy/simple_blocks.js');
+await m.default();         // or await m.default('/bevy/simple_blocks_bg.wasm')
+m.init_stress_inbox();
+window.__bevy = m;  
+  // expose for your button
 
-
-<div class="text-center my-5">
-        <canvas id="unityContainer2" width="960" height="500" style="background:#000; width:100%; height:100%"></canvas>
-      </div>
-<div class="text-center my-4">
-        <img src="/assets/img/psi_gradient.png" alt="NN2 Output Visualization" style="max-width:50%; height:auto;">
-      </div>
-
+</script>
 <script src="/assets/js/NN3.js"></script>
+<div class="text-center my-3">
+  <button class="btn btn-success btn-lg my-4" onclick="runNN3()">Generate Stress Field</button>
+</div>
+
+<canvas id="bevy" style="width:100%;height:70vh;display:block"></canvas>
