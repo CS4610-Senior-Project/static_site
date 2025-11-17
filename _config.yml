@@ -54,3 +54,6 @@ plugins:
 #   - vendor/gems/
 #   - vendor/ruby/
 baseurl: /static_site/ 
+
+plugins:
+  - jekyll-redirect-from

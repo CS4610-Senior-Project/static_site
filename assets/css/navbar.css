@@ -1,27 +1,132 @@
-.navbar-custom {
-  background: url("../img/cpp_campus.png") no-repeat center center;
-  background-size: cover;
-  position: relative;
+.navbar-da {
+    background-color: #1a1a1d;              /* deep charcoal */
+    border-bottom: 1px solid #333;
+    padding: 0.75rem 1.5rem;
+    font-family: "Roboto Mono", monospace;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    width: 100;
 }
 
-.navbar-custom .navbar-brand,
-.navbar-custom .nav-link {
-  color: #fff;
-  text-shadow:
-    -1px -1px 0 #000,
-     1px -1px 0 #000,
-    -1px  1px 0 #000,
-     1px  1px 0 #000;
+.navbar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.navbar-custom .navbar-brand {
-  display: flex;
-  align-items: center;
-}
-.navbar-custom .navbar-brand img {
-  margin-right: 10px;
-}
-.navbar-custom .nav-link {
-  margin-right: 15px;
+/* Brand */
+.navbar-brand {
+    color: #e4e4e4;
+    text-decoration: none;
+    font-size: 1.3rem;
+    font-weight: 500;
+    display: flex !important;
+    flex-direction: row important ;     /* changed from column */
+    align-items: center important;
+    gap: 12px;               /* spacing between navbar logo and text */
 }
 
+.nav-logo {
+    height: 38px;
+    width: auto;
+    display: block;
+    filter: brightness(0.9);
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-text .navbar-subtitle {
+    margin-top: -2px;
+    font-size: 0.72rem;
+    opacity: 0.6;
+}
+
+.navbar-subtitle {
+    font-size: 0.72rem;
+    opacity: 0.6;
+    margin-top: -2px;
+}
+
+/* Nav links */
+.navbar-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-item {
+    color: #c8c8c8;
+    text-decoration: none;
+    position: relative;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    transition: color 0.25s ease;
+}
+
+.nav-item:hover {
+    color: #a8f0c6;  /* pale green */
+}
+
+/* Underline animation */
+.nav-item::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0%;
+    height: 2px;
+    background-color: #a8f0c6;
+    transition: width 0.3s ease;
+}
+
+.nav-item:hover::after {
+    width: 100%;
+}
+
+/* ============ MOBILE ============ */
+.navbar-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.navbar-toggle span {
+    width: 24px;
+    height: 2px;
+    background: #e4e4e4;
+    transition: 0.3s;
+}
+
+/* Mobile dropdown */
+@media (max-width: 768px) {
+
+    .navbar-links {
+        position: absolute;
+        top: 58px;
+        right: 0;
+        background: #1a1a1d;
+        width: 100%;
+        flex-direction: column;
+        padding: 1rem 0;
+        display: none; /* closed by default */
+        border-bottom: 1px solid #333;
+    }
+
+    .navbar-links.open {
+        display: flex;
+    }
+
+    .navbar-toggle {
+        display: flex;
+    }
+
+    
+}

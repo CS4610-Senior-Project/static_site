@@ -1,10 +1,27 @@
-<nav class="navbar navbar-custom">
-	<div class="navbar-inner">
-		<div class="brand"><strong>CalPolyPomona</strong><span>CPP DiTTA</span></div>
-		<nav class="nav-links">
-			<a href="{{ '/' | relative_url }}">Home</a>
-			<a href="{{ '/interactive/' | relative_url }}">Interactive Model</a>
-			<a href="{{ '/about/' | relative_url }}">About DiTTA</a>
-		</nav>
-	</div>
+<nav class="navbar-da">
+    <div class="navbar-inner">
+        
+        <!-- Brand -->
+        <a class="navbar-brand" href="{{ '/' | relative_url }}">
+           <img src="{{ '/assets/img/cpp_logo.png' | relative_url }}" 
+                 alt="CPP Logo" class="nav-logo">
+            
+            <div class="brand-text">
+                CPP DiTTA
+                <span class="navbar-subtitle">Digital Twin Technology for Aerospace</span>
+            </div>
+        </a>
+
+        <!-- Hamburger for mobile -->
+        <button class="navbar-toggle" id="navbar-toggle">
+            <span></span><span></span><span></span>
+        </button>
+
+        <!-- Navigation links -->
+        <div class="navbar-links" id="navbar-links">
+            <a href="{{ '/' | relative_url }}" class="nav-item">Interactive Model</a>
+            <a href="{{ '/about/' | relative_url }}" class="nav-item">About DiTTA</a>
+            <a href="{{ '/contributors/' | relative_url }}" class="nav-item">Contributors</a>
+        </div>
+    </div>
 </nav>

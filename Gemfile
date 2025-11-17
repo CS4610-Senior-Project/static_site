@@ -33,3 +33,8 @@ gem 'wdm', '~> 0.1', platforms: [:windows]
 gem 'http_parser.rb', '~> 0.6.0', platforms: [:jruby]
 
 gem "github-pages", "~> 232", group: :jekyll_plugins
+
+# for page redirects
+group :jekyll_plugins do
+  gem "jekyll-redirect-from"
+end
