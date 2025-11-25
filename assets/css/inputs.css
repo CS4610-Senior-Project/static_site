@@ -19,6 +19,9 @@ button[type="submit"] {
 }
 .input-wrapper { text-align: center; }
 
+.input-label {
+  color: #fff
+}
 
 .input-group {
   display: flex;
@@ -41,6 +44,17 @@ button[type="submit"] {
 .btn-secondary.btn-sm {
 	padding: 4px 8px;
 	height: 28px;
+  background-color: #28a645;
+  border: 1px solid #ccc;
+  border-radius: 6px;      /* space around text */
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #ffffff;
+  cursor: pointer;
+  text-align: center;
+  width: auto;             /* auto-expands for text */
+  min-width: 60px;         /* prevents awkward shrinking */
+  transition: background-color 0.2s ease;
 }
 
 input[type="number"].form-control {

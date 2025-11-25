@@ -1,7 +1,7 @@
 .navbar-da {
-    background-color: #1a1a1d;              /* deep charcoal */
-    border-bottom: 1px solid #333;
-    padding: 0.75rem 1.5rem;
+    background-color: #005030;              /* deep charcoal */
+    border-bottom: 0;
+    padding: 8px 24px;
     font-family: "Roboto Mono", monospace;
     position: sticky;
     top: 0;
@@ -69,7 +69,7 @@
 }
 
 .nav-item:hover {
-    color: #a8f0c6;  /* pale green */
+    color: #ffb81c;  /* pale green */
 }
 
 /* Underline animation */
@@ -80,7 +80,7 @@
     bottom: -4px;
     width: 0%;
     height: 2px;
-    background-color: #a8f0c6;
+    background-color: #ffb81c;
     transition: width 0.3s ease;
 }
 
