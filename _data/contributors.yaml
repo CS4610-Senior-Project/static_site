@@ -3,7 +3,7 @@ students:
   role: Developer
   email: dmonge@cpp.edu
   image: /assets/img/contributors/dylan_monge.jpg
-  link: www.linkedin.com/in/dylan-monge
+  link: https://www.linkedin.com/in/dylan-monge
   
 - name: Colin Driggs
   role: Developer
