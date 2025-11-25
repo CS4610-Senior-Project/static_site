@@ -24,8 +24,8 @@
     font-size: 1.3rem;
     font-weight: 500;
     display: flex !important;
-    flex-direction: row important ;     /* changed from column */
-    align-items: center important;
+    flex-direction: row !important ;     /* changed from column */
+    align-items: center !important;
     gap: 12px;               /* spacing between navbar logo and text */
 }
 

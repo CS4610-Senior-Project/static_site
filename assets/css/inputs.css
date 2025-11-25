@@ -38,30 +38,23 @@ button[type="submit"] {
   margin: 0 auto; /* centers button inside the column */
 }
 
-
 .btn-secondary.btn-sm {
 	padding: 4px 8px;
 	height: 28px;
 }
-
-
 
 input[type="number"].form-control {
 	width: 60px;
   margin: 0 auto 
 }
 
-
-
-#setValuesBtn { background-color: #007bff; color: #fff; margin-top: 20px; }
-#setValuesBtn:hover { background-color: #0056b3; }
-
-
+#setValuesBtn { background-color: #28a745; color: #fff; margin-top: 20px; }
+#setValuesBtn:hover { background-color: #28a745; }
 
 .btn-outline-primary {
   background:#fff;
-  color:#0d6efd;
-  border:2px solid #0d6efd;
+  color:#28a745;
+  border:2px solid #28a745;
   border-radius:10px;
   padding:.1rem .2rem;
   cursor:pointer;

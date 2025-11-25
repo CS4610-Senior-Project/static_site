@@ -7,8 +7,13 @@ permalink: /
 ---
 
 # CPP-DiTTA Interactive Model
-## Step 1 - Predicting Damage Location
-First, seven sensors are used to read stress values along the length of the 24-inch beam. The values of these sensors will give insight into the location of any damage along the beam, if any.
+Welcome to the interactive stress analysis model developed for the Digital Twin Technology for Aerospace (DiTTA) initiative at Cal Poly Pomona.
+
+This tool demonstrates:
+- **Predicting damage location** along a 24-inch beam using NN1  
+- **Generating a full stress field** across ~40,000 nodes using NN3  
+- **Real-time 3D visualization** through Unity (WebGL) and Bevy (WASM)
+
 
 Input stress values for each node on the beam. These may range from 0 to 10,000 psi.
 
