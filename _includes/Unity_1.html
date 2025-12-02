@@ -13,3 +13,29 @@
 
 <script src="{{ '/assets/js/NN1.js' | relative_url }}"></script>
 
+<!--
+  Prevent Unity/Bevy from blocking typing in input fields. Enables manual typing on all text boxes.
+
+  Unity is capturing keyboard events globally, which stops users from 
+  typing numbers or text into HTML <input> elements. This snippet intercepts 
+  key events early and, if the user is focused on an input or textarea, it 
+  stops those events from reaching the game engine—allowing normal typing 
+  to work while leaving gameplay controls unaffected outside of inputs.
+-->
+<script>
+(function () {
+  function allowTyping(e) {
+    const tag = e.target.tagName.toLowerCase();
+    if (tag === 'input' || tag === 'textarea') {
+      // If user is typing in a field, never let game engines see the event
+      e.stopImmediatePropagation();
+      // Don't call preventDefault – let the browser handle normal typing
+    }
+  }
+
+  window.addEventListener('keydown', allowTyping, true);
+  window.addEventListener('keypress', allowTyping, true);
+  window.addEventListener('beforeinput', allowTyping, true);
+})();
+</script>
+

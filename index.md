@@ -19,6 +19,7 @@ The goal of this model is to predict the location of a cut in the beam using Von
 
 The model was trained using a dataset of 81 cut location scenarios and their related stress readings at each node.
 
+# Step 1: Predicting Damage
 
 Input stress values for each node on the beam. These may range from 0 to 10,000 psi.
 
@@ -27,6 +28,8 @@ Input stress values for each node on the beam. These may range from 0 to 10,000 
 <!-- Unity NN1 -->
 {% include Unity_1.html %}
 
+# Step 2: Generating Stress Field
+
 The second model is designed to predict the von Mises stress at any point within the beam, given its spatial coordinates and the applied load conditions. Unlike the previous neural network used for predicting cut locations, this model focuses on learning the stress field response of the structure under varying force scenarios.
 
 To train this model, a comprehensive dataset of ANSYS finite element simulations was used. Each simulation represents a different cut location and applied load case, capturing the resulting stress distribution across the beam. The complete dataset consists of 481 simulation files, for a total of nearly 19,630,227 data points
@@ -34,3 +37,19 @@ To train this model, a comprehensive dataset of ANSYS finite element simulations
 <!-- Unity NN3 -->
 {% include Unity_2.html %}
 
+# Step 3: Adjusting Applied Force 
+
+The Stress Field in Step 2 was generated under a load contition of 2.5lbs. Now, enter a custom value (in lbs) to see the difference in strain on the beam, given the damage.
+
+<div class="text-center my-3">
+  <input id="force-input"
+         type="number"
+         step="any"
+         class="form-control w-25 d-inline"
+         placeholder="Enter force (lbs)">
+  
+  <button class="btn btn-primary btn-lg my-4"
+          onclick="runNN3Step3()">
+    Generate Custom Force Stress Field
+  </button>
+</div>

@@ -110,7 +110,7 @@ function invMinMax(val, minArr, scaleArr, idx) {
     return (val - minArr[idx]) / scaleArr[idx];
 }
 
-async function runNN3() {
+async function runNN3WithForce(forceValue) {
     const result = document.getElementById("ml-result-container").dataset.prediction || "unknown";
     if (result === "unknown") {
         alert("Please run the machine learning model first.");
@@ -118,7 +118,7 @@ async function runNN3() {
     }
 
     const cutLocation = parseFloat(result);
-    const forceValue = 2.5; // TODO: wire a UI control if you want this adjustable
+    // const forceValue = 2.5;
 
     // 1) Load model + scalers
     const [session, scalers] = await Promise.all([loadNN3(), loadNN3Scalers()]);
@@ -183,6 +183,23 @@ const payload = JSON.stringify(points);
 const bevy = (window.__bevy || window.wasm || window.wasm_bindgen) ?? await waitBevy();
 bevy.bevy_receive_stress_json(payload, null);
 
+}
+
+// Step 2 (hardcoded 2.5 lbs)
+// User is not allowed to change force at this step
+async function runNN3Step2() {
+    await runNN3WithForce(2.5);
+}
+
+// Step 3 (custom force via UI input)
+// User is now allowed to change force and rerun the second Bevy window
+async function runNN3Step3() {
+    const val = parseFloat(document.getElementById("force-input").value);
+    if (isNaN(val)) {
+        alert("Please enter a valid number for applied force.");
+        return;
+    }
+    await runNN3WithForce(val);
 }
 
 
