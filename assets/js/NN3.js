@@ -194,11 +194,24 @@ async function runNN3Step2() {
 // Step 3 (custom force via UI input)
 // User is now allowed to change force and rerun the second Bevy window
 async function runNN3Step3() {
-    const val = parseFloat(document.getElementById("force-input").value);
+    const inputElem  = document.getElementById("force-input");
+    const sliderElem = document.getElementById("force-slider");
+
+    // Prefer the slider’s value if moved, otherwise the text input
+    let val = parseFloat(sliderElem?.value ?? inputElem.value);
+
+    // If slider value is NaN (should not happen), fallback to input
+    if (isNaN(val)) val = parseFloat(inputElem.value);
+
+    // Validate again
     if (isNaN(val)) {
-        alert("Please enter a valid number for applied force.");
+        alert("Please enter or select a valid force value.");
         return;
     }
+
+    // Clamp to the allowed range
+    val = Math.min(15, Math.max(2, val));
+
     await runNN3WithForce(val);
 }
 

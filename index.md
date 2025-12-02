@@ -42,14 +42,58 @@ To train this model, a comprehensive dataset of ANSYS finite element simulations
 The Stress Field in Step 2 was generated under a load contition of 2.5lbs. Now, enter a custom value (in lbs) to see the difference in strain on the beam, given the damage.
 
 <div class="text-center my-3">
+  
+  <!-- input box -->
   <input id="force-input"
          type="number"
          step="any"
+         min="2"
+         max="15"
          class="form-control w-25 d-inline"
          placeholder="Enter force (lbs)">
-  
-  <button class="btn btn-primary btn-lg my-4"
+
+  <br><br>
+
+  <!-- Slider + labels -->
+  <div style="display:flex; align-items:center; justify-content:center; gap:12px;">
+    <span class="force-label">2 lbs</span>
+
+    <input id="force-slider"
+           type="range"
+           min="2"
+           max="15"
+           step="0.1"
+           value="2.5"
+           class="form-range w-50">
+
+    <span class="force-label">15 lbs</span>
+  </div>
+
+  <br>
+
+  <button class="btn btn-success btn-lg my-4"
           onclick="runNN3Step3()">
     Generate Custom Force Stress Field
   </button>
 </div>
+
+
+<script>
+  const forceInput  = document.getElementById('force-input');
+  const forceSlider = document.getElementById('force-slider');
+
+  // When slider moves → update input box
+  forceSlider.addEventListener('input', () => {
+    forceInput.value = forceSlider.value;
+  });
+
+  // When user types a value → update slider
+  forceInput.addEventListener('input', () => {
+    const val = parseFloat(forceInput.value);
+    if (!isNaN(val)) {
+      // Clamp between min and max
+      const clamped = Math.min(15, Math.max(2, val));
+      forceSlider.value = clamped;
+    }
+  });
+</script>
