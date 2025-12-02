@@ -1,0 +1,32 @@
+students:
+- name: Dylan Monge
+  role: Developer
+  email: dmonge@cpp.edu
+  image: /assets/img/contributors/dylan_monge.jpg
+  link: https://www.linkedin.com/in/dylan-monge
+  
+- name: Colin Driggs
+  role: Developer
+  email: jsmith@cpp.edu
+  image: /assets/img/contributors/phoebe.jpg
+  link: www.google.com
+
+- name: Jeremy Major
+  role: Engineer
+  email: jdoe@cpp.edu
+  image: /assets/img/contributors/phoebe.jpg
+  link: www.google.com
+
+
+faculty: 
+- name: Dr. Zahra Sotoudeh
+  role: Supervisor - Aerospace Engineering
+  email: zsotoudeh@cpp.edu
+  image: /assets/img/contributors/phoebe.jpg
+  link: www.google.com
+
+  # Markus Eger? 
+
+  # Fatemeh Jamshidi? 
+
+

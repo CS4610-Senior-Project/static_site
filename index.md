@@ -7,8 +7,18 @@ permalink: /
 ---
 
 # CPP-DiTTA Interactive Model
-## Step 1 - Predicting Damage Location
-First, seven sensors are used to read stress values along the length of the 24-inch beam. The values of these sensors will give insight into the location of any damage along the beam, if any.
+Welcome to the interactive model developed for CPP-DiTTA (Digital Twin Technology for Aerospace) at Cal Poly Pomona.
+
+This interactive tool is powered by two neural networks trained on simulated stress profiles generated from a 24-inch beam outfitted with force sensors. 
+
+With this interface, users can input stress readings from seven virtual sensors to estimate where damage may be located along the beam. The first model (NN1) predicts the most likely cut position based solely on the stress signature. 
+
+By adjusting sensor values and interacting with the 3D visualization, users can explore how machine learning interprets structural behaviors.
+
+The goal of this model is to predict the location of a cut in the beam using Von-Mises stress values from seven sensors that line the bottom face of the beam. The cut location is then passed to the second model for further visualization.
+
+The model was trained using a dataset of 81 cut location scenarios and their related stress readings at each node.
+
 
 Input stress values for each node on the beam. These may range from 0 to 10,000 psi.
 
@@ -16,6 +26,10 @@ Input stress values for each node on the beam. These may range from 0 to 10,000 
 
 <!-- Unity NN1 -->
 {% include Unity_1.html %}
+
+The second model is designed to predict the von Mises stress at any point within the beam, given its spatial coordinates and the applied load conditions. Unlike the previous neural network used for predicting cut locations, this model focuses on learning the stress field response of the structure under varying force scenarios.
+
+To train this model, a comprehensive dataset of ANSYS finite element simulations was used. Each simulation represents a different cut location and applied load case, capturing the resulting stress distribution across the beam. The complete dataset consists of 481 simulation files, for a total of nearly 19,630,227 data points
 
 <!-- Unity NN3 -->
 {% include Unity_2.html %}

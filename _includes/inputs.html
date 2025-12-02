@@ -29,20 +29,20 @@
         {% assign i = forloop.index %}
         
         <div class="input-wrapper"> 
-          <label for="input{{ i }}" class="input-label">{{ L }} in Probe</label>
+          <label for="input{{ i }}" class="input-label">{{ L }}-in Probe</label>
           <div class="input-group">
             <button type="button" class="btn btn-secondary btn-sm" 
-              onclick="adjustInput('input{{ i }}',1000)">▲</button>
+              onclick="adjustInput('input{{ i }}',100)">+100</button>
             <button type="button" class="btn btn-secondary btn-sm" 
-              onclick="adjustInput('input{{ i }}',100)">▲</button>
+              onclick="adjustInput('input{{ i }}',1000)">+1000</button>
 
             <input id="input{{ i }}" name="input{{ i }}" class="form-control"
               type="number" step="any" value="0" min="0" max="20000">
 
             <button type="button" class="btn btn-secondary btn-sm" 
-              onclick="adjustInput('input{{ i }}',-100)">▼</button>
+              onclick="adjustInput('input{{ i }}',-1000)">-1000</button>
             <button type="button" class="btn btn-secondary btn-sm" 
-              onclick="adjustInput('input{{ i }}',-1000)">▼</button>
+              onclick="adjustInput('input{{ i }}',-100)">-100</button>
           </div>
         </div>
         

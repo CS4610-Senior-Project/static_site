@@ -1,0 +1,10 @@
+#bevy {
+  width: 100%;
+  max-width: 960px;    /* same as unity container for now */
+  height: 70vh;         
+  margin: 0 auto;
+  display: block;
+  /*border-radius: 12px;*/
+  background: #000;     /* avoids white flash */
+  outline: none;
+}

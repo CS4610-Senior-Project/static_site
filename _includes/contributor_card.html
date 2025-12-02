@@ -1,0 +1,9 @@
+<div class="contributor-card">
+    <img src="{{ include.image | relative_url }}" alt="{{ include.name }}" class="contributor-img">
+    <div class="contributor-name">{{ include.name }}</div>
+    <div class="contributor-role">{{ include.role }}</div>
+    <a href="mailto:{{ include.email }}" class="contributor-email">{{ include.email }}</a>
+    <div class="contributor-link">
+    <a href="{{ include.link }}" target="_blank">LinkedIn →</a>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+.contributors-grid {
+  display: flex;
+  flex-wrap: wrap;            
+  gap: 30px;
+  justify-content: center;     
+  margin-top: 30px;
+}
+
+.contributor-card {
+  background: none;         
+  color: #eaeaea;
+  width: 200px;
+  height: 350px;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.contributor-img {
+  height: 275px !important;
+  width: 200px !important;      
+  object-fit: cover !important;
+  border-radius: 10px;
+}
+
+
+.contributor-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.contributor-role {
+  font-size: 0.9rem;
+  opacity: 0.75;
+  margin-bottom: 8px;
+}
+
+.contributor-email {
+  font-size: 0.85rem;
+  color: #a8f0c6;
+  text-decoration: none;
+}
+
+.contributor-email:hover {
+  text-decoration: underline;
+}
+
+.contributor-link a {
+  color: #a8f0c6;
+  font-size: 0.85rem;
+  text-decoration: none;
+  margin-top: 6px;
+  display: inline-block;
+}
+
+.contributor-link a:hover {
+  text-decoration: underline;
+}

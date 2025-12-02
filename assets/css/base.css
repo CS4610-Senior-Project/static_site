@@ -1,15 +1,16 @@
 body {
   font-family: 'Montserrat', sans-serif;
-  background-color: #ffffff;
+  background-color: #131313 !important;
   color: #000000;
+  margin: 0;
 }
 
 
 .content-wrapper {
-  background-color: #ffffff;
+  background-color: #131313;
   margin: 45px auto;
   padding: 45px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: none;
   border-radius: 10px;
   max-width: 1200px;
 }
@@ -18,9 +19,17 @@ body {
   padding: 0;
 }
 
-
 h1, h2, h3, h4, h5, h6 {
   font-family: "Roboto Mono", monospace;
+  color: #ffffff
+}
+
+p {
+  color: #ffffff
+}
+
+li { 
+  color: #ffffff;
 }
 
 /* remove browser number spinners */
@@ -33,6 +42,17 @@ input[type="number"] { -moz-appearance: textfield; }
 
 .center{text-align:center}
 
+.alert-info {
+  background-color: #007bff !important;  
+  border-color: #007bff !important;      
+  color: #ffffff !important;                
+  width: fit-content;
+  margin: 20px auto;
+}
 
+.alert-info * {
+  color: #000000; 
+  background-color: #007bff !important;
+}
 
 
