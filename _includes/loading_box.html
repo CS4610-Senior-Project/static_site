@@ -1,0 +1,19 @@
+
+<link rel="stylesheet" href="{{ '/assets/css/loading_box.css' | relative_url }}">
+
+<div id="loading-toast">
+  <div class="loading-box">
+    <div class="spinner"></div>
+    <span>Loading stress field...</span>
+  </div>
+</div>
+
+<script>
+function showLoading() {
+  document.getElementById("loading-toast").style.display = "block";
+}
+
+function hideLoading() {
+  document.getElementById("loading-toast").style.display = "none";
+}
+</script>

@@ -111,6 +111,7 @@ function invMinMax(val, minArr, scaleArr, idx) {
 }
 
 async function runNN3WithForce(forceValue) {
+    showLoading(); 
     const result = document.getElementById("ml-result-container").dataset.prediction || "unknown";
     if (result === "unknown") {
         alert("Please run the machine learning model first.");
@@ -182,6 +183,7 @@ async function runNN3WithForce(forceValue) {
 const payload = JSON.stringify(points);
 const bevy = (window.__bevy || window.wasm || window.wasm_bindgen) ?? await waitBevy();
 bevy.bevy_receive_stress_json(payload, null);
+hideLoading(); 
 
 }
 
