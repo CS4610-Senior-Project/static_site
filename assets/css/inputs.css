@@ -74,4 +74,8 @@ input[type="number"].form-control {
   cursor:pointer;
 }
 
-
+/* NN Step 3 */
+  .force-label {
+    color: white;
+    font-weight: 600; 
+  }

@@ -1,9 +1,9 @@
 ---
 ---
-const NN3_URL       = "{{ '/assets/ONNX/NN3.onnx' | relative_url }}";
-const SCALER_X_URL  = "{{ '/assets/ONNX/scaler_X_nn3_noEng.json' | relative_url }}";
-const SCALER_Y_URL  = "{{ '/assets/ONNX/scaler_y_nn3_noEng.json' | relative_url }}";
-const NODE_CSV_URL  = "{{ '/assets/Node_Cords_40k.csv' | relative_url }}";
+const NN3_URL       = "{{ 'assets/ONNX/NN3.onnx' | relative_url }}";
+const SCALER_X_URL  = "{{ 'assets/ONNX/scaler_X_nn3_noEng.json' | relative_url }}";
+const SCALER_Y_URL  = "{{ 'assets/ONNX/scaler_y_nn3_noEng.json' | relative_url }}";
+const NODE_CSV_URL  = "{{ 'assets/Node_Cords_40k.csv' | relative_url }}";
 
 
 let nn3Session = null;
@@ -110,7 +110,8 @@ function invMinMax(val, minArr, scaleArr, idx) {
     return (val - minArr[idx]) / scaleArr[idx];
 }
 
-async function runNN3() {
+async function runNN3WithForce(forceValue) {
+    showLoading(); 
     const result = document.getElementById("ml-result-container").dataset.prediction || "unknown";
     if (result === "unknown") {
         alert("Please run the machine learning model first.");
@@ -118,7 +119,7 @@ async function runNN3() {
     }
 
     const cutLocation = parseFloat(result);
-    const forceValue = 2.5; // TODO: wire a UI control if you want this adjustable
+    // const forceValue = 2.5;
 
     // 1) Load model + scalers
     const [session, scalers] = await Promise.all([loadNN3(), loadNN3Scalers()]);
@@ -182,7 +183,38 @@ async function runNN3() {
 const payload = JSON.stringify(points);
 const bevy = (window.__bevy || window.wasm || window.wasm_bindgen) ?? await waitBevy();
 bevy.bevy_receive_stress_json(payload, null);
+hideLoading(); 
 
+}
+
+// Step 2 (hardcoded 2.5 lbs)
+// User is not allowed to change force at this step
+async function runNN3Step2() {
+    await runNN3WithForce(2.5);
+}
+
+// Step 3 (custom force via UI input)
+// User is now allowed to change force and rerun the second Bevy window
+async function runNN3Step3() {
+    const inputElem  = document.getElementById("force-input");
+    const sliderElem = document.getElementById("force-slider");
+
+    // Prefer the slider’s value if moved, otherwise the text input
+    let val = parseFloat(sliderElem?.value ?? inputElem.value);
+
+    // If slider value is NaN (should not happen), fallback to input
+    if (isNaN(val)) val = parseFloat(inputElem.value);
+
+    // Validate again
+    if (isNaN(val)) {
+        alert("Please enter or select a valid force value.");
+        return;
+    }
+
+    // Clamp to the allowed range
+    val = Math.min(15, Math.max(2, val));
+
+    await runNN3WithForce(val);
 }
 
 
