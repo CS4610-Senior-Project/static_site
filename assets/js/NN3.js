@@ -1,9 +1,9 @@
 ---
 ---
-const NN3_URL       = "{{ '/assets/ONNX/NN3.onnx' | relative_url }}";
-const SCALER_X_URL  = "{{ '/assets/ONNX/scaler_X_nn3_noEng.json' | relative_url }}";
-const SCALER_Y_URL  = "{{ '/assets/ONNX/scaler_y_nn3_noEng.json' | relative_url }}";
-const NODE_CSV_URL  = "{{ '/assets/Node_Cords_40k.csv' | relative_url }}";
+const NN3_URL       = "{{ 'assets/ONNX/NN3.onnx' | relative_url }}";
+const SCALER_X_URL  = "{{ 'assets/ONNX/scaler_X_nn3_noEng.json' | relative_url }}";
+const SCALER_Y_URL  = "{{ 'assets/ONNX/scaler_y_nn3_noEng.json' | relative_url }}";
+const NODE_CSV_URL  = "{{ 'assets/Node_Cords_40k.csv' | relative_url }}";
 
 
 let nn3Session = null;

@@ -1,9 +1,9 @@
 ---
 --- 
-const NN1_URL     = "{{ '/assets/ONNX/NN1_trained_model.onnx' | relative_url }}";
-const SCALER_URL  = "{{ '/assets/ONNX/NN1_scaler.json' | relative_url }}";
-const LOADER_URL  = "{{ '/assets/models/UnityBuild_NN1/WebGL_NN1_Build4.loader.js' | relative_url }}";
-const BUILD_BASE  = "{{ '/assets/models/UnityBuild_NN1' | relative_url }}";
+const NN1_URL     = "{{ 'assets/ONNX/NN1_trained_model.onnx' | relative_url }}";
+const SCALER_URL  = "{{ 'assets/ONNX/NN1_scaler.json' | relative_url }}";
+const LOADER_URL  = "{{ 'assets/models/UnityBuild_NN1/WebGL_NN1_Build4.loader.js' | relative_url }}";
+const BUILD_BASE  = "{{ 'assets/models/UnityBuild_NN1' | relative_url }}";
 
   
   let nn1Session = null;
