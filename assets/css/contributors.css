@@ -1,56 +1,71 @@
 .contributors-grid {
   display: flex;
-  flex-wrap: wrap;            
+  flex-wrap: wrap;
   gap: 30px;
-  justify-content: center;     
+  justify-content: center;
   margin-top: 30px;
 }
 
+/* Card Container */
 .contributor-card {
-  background: none;         
+  background: none;
   color: #eaeaea;
   width: 200px;
-  height: 350px;
   padding: 20px;
   border-radius: 12px;
   text-align: center;
+
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
+/* Contributor Image */
 .contributor-img {
   height: 275px !important;
-  width: 200px !important;      
+  width: 200px !important;
   object-fit: cover !important;
   border-radius: 10px;
 }
 
-
+/* Name */
 .contributor-name {
   font-size: 1.1rem;
   font-weight: 700;
+  margin-top: 10px;
   margin-bottom: 4px;
 }
 
+/* Role */
 .contributor-role {
   font-size: 0.9rem;
   opacity: 0.75;
   margin-bottom: 8px;
 }
 
+/* Email */
 .contributor-email {
   font-size: 0.85rem;
   color: #a8f0c6;
   text-decoration: none;
+  display: block;
+  margin-top: 6px;
+  border: none !important;
 }
 
 .contributor-email:hover {
   text-decoration: underline;
 }
 
+/* LinkedIn block */
+.contributor-link {
+  margin-top: 8px;
+  border: none !important;
+}
+
 .contributor-link a {
   color: #a8f0c6;
   font-size: 0.85rem;
   text-decoration: none;
-  margin-top: 6px;
   display: inline-block;
 }
 

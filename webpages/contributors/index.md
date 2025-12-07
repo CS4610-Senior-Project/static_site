@@ -4,10 +4,26 @@ title: Contributors
 permalink: /contributors/
 ---
 
-# Project Contributors
-A list of the students, faculty, collaborators, and researchers involved.
+# DiTTA Contributors
 
-## Faculty Advisors
+---
+
+## Director
+<div class="contributors-grid">
+  {% for person in site.data.contributors.director %}
+    {% include contributor_card.html 
+        name=person.name 
+        role=person.role 
+        email=person.email 
+        image=person.image 
+        link=person.link
+    %}
+  {% endfor %}
+</div>
+
+---
+
+## Faculty Contributors
 <div class="contributors-grid">
   {% for person in site.data.contributors.faculty %}
     {% include contributor_card.html 
@@ -20,9 +36,26 @@ A list of the students, faculty, collaborators, and researchers involved.
   {% endfor %}
 </div>
 
+---
+
 ## Student Development Team
 <div class="contributors-grid">
   {% for person in site.data.contributors.students %}
+    {% include contributor_card.html 
+        name=person.name 
+        role=person.role 
+        email=person.email 
+        image=person.image 
+        link=person.link
+    %}
+  {% endfor %}
+</div>
+
+---
+
+## Other DiTTA Members
+<div class="contributors-grid">
+  {% for person in site.data.contributors.other_members %}
     {% include contributor_card.html 
         name=person.name 
         role=person.role 

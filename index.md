@@ -10,7 +10,6 @@ permalink: /
 
 # CPP-DiTTA Interactive Model
 
-<br><br>
 Welcome to the interactive model developed for CPP-DiTTA (Digital Twin Technology for Aerospace) at Cal Poly Pomona.
 
 This interactive tool is powered by two neural networks trained on simulated stress profiles generated from a 24-inch beam outfitted with force sensors. 
@@ -23,7 +22,6 @@ The goal of this model is to predict the location of a cut in the beam using Von
 
 The model was trained using a dataset of 81 cut location scenarios and their related stress readings at each node.
 
-<br><br>
 # Step 1: Predicting Damage
 
 Input stress values for each node on the beam. These may range from 0 to 10,000 psi.
@@ -42,7 +40,6 @@ To train this model, a comprehensive dataset of ANSYS finite element simulations
 <!-- Unity NN3 -->
 {% include Unity_2.html %}
 
-<br><br>
 # Step 3: Adjusting Applied Force 
 
 The Stress Field in Step 2 was generated under a load contition of 2.5lbs. Now, enter a custom value (in lbs) to see the difference in strain on the beam, given the damage.

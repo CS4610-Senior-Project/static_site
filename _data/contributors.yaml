@@ -1,32 +1,69 @@
+director:
+  - name: Dr. Zahra Sotoudeh
+    role: DiTTA Director
+    email: zsotoudeh@cpp.edu
+    image: /assets/img/contributors/dr_sotoudeh.png
+    link: 
+
+faculty:
+  - name: Dr. Markus Eger
+    role: Faculty Contributor
+    email: markus.eger@gmail.com
+    image: /assets/img/contributors/default_user.png
+    link: 
+
+  - name: Dr. Fatemeh Jamshidi
+    role: Faculty Contributor
+    email: fjamshidi@cpp.edu
+    image: /assets/img/contributors/default_user.png
+    link: 
+
 students:
-- name: Dylan Monge
-  role: Developer
-  email: dmonge@cpp.edu
-  image: /assets/img/contributors/dylan_monge.jpg
-  link: https://www.linkedin.com/in/dylan-monge
-  
-- name: Colin Driggs
-  role: Developer
-  email: jsmith@cpp.edu
-  image: /assets/img/contributors/phoebe.jpg
-  link: www.google.com
+  - name: Dylan Monge
+    role: Computer Science
+    email: dylanmonge2002@gmai.com
+    image: /assets/img/contributors/dylan_monge.jpg
+    link: https://www.linkedin.com/in/dylan-monge
 
-- name: Jeremy Major
-  role: Engineer
-  email: jdoe@cpp.edu
-  image: /assets/img/contributors/phoebe.jpg
-  link: www.google.com
+  - name: Colin Driggs
+    role: Aerospace Engineering
+    email: cadriggs@cpp.edu
+    image: /assets/img/contributors/default_user.png
+    link:
 
+  - name: Aiden Holley
+    role: Aerospace Engineering
+    email: ajholley@cpp.edu
+    image: /assets/img/contributors/aiden_holley.jpg
+    link: https://www.linkedin.com/in/aiden-holley-89970732a/
 
-faculty: 
-- name: Dr. Zahra Sotoudeh
-  role: Supervisor - Aerospace Engineering
-  email: zsotoudeh@cpp.edu
-  image: /assets/img/contributors/phoebe.jpg
-  link: www.google.com
+  - name: Ricky Montano
+    role: Aerospace Engineering
+    email: rickymontano@cpp.edu
+    image: /assets/img/contributors/ricky_montano.jpg
+    link: https://www.linkedin.com/in/ricky-montano-ba5797292/
 
-  # Markus Eger? 
+other_members:
+  - name: Jeremy Major
+    role: Aerospace Engineering
+    email: jamajor@cpp.edu
+    image: /assets/img/contributors/default_user.png
+    link: 
 
-  # Fatemeh Jamshidi? 
+  - name: John Diaz
+    role: Aerospace Engineering
+    email: johndiaz@cpp.edu
+    image: /assets/img/contributors/default_user.png
+    link: 
 
+  - name: Enixe Aguilar
+    role: Aerospace Engineering
+    email: enixeaguilar@cpp.edu
+    image: /assets/img/contributors/default_user.png
+    link: 
 
+  - name: Noah Weldon
+    role: Electrical Engineering
+    email: noahw1356@gmail.com
+    image: /assets/img/contributors/default_user.png
+    link: 

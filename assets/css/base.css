@@ -55,4 +55,29 @@ input[type="number"] { -moz-appearance: textfield; }
   background-color: #007bff !important;
 }
 
+/* More readable typography for content pages */
+.content-wrapper {
+  line-height: 1.6;        /* increases spacing between lines */
+}
+
+.content-wrapper p {
+  margin-bottom: 1.2rem;   /* adds space between paragraphs */
+}
+
+.content-wrapper h1,
+.content-wrapper h2,
+.content-wrapper h3 {
+  margin-top: 2rem;        /* adds space above headings */
+  margin-bottom: 1rem;     /* below headings */
+}
+
+.content-wrapper ul,
+.content-wrapper ol {
+  margin-bottom: 1.5rem;   /* spacing after lists */
+  line-height: 1.5;        /* spacing inside list items */
+}
+
+.content-wrapper li {
+  margin-bottom: 0.4rem;   /* small spacing between bullets */
+}
 
