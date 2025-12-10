@@ -1,5 +1,10 @@
 <div class="contributor-card">
-    <img src="{{ include.image | relative_url }}" alt="{{ include.name }}" class="contributor-img">
+
+    {% if include.image %}
+      <img src="{{ include.image | relative_url }}"
+           alt="{{ include.name }}"
+           class="contributor-img">
+    {% endif %}
 
     <div class="contributor-name">{{ include.name }}</div>
     <div class="contributor-role">{{ include.role }}</div>
@@ -13,4 +18,5 @@
         <a href="{{ include.link }}" target="_blank">LinkedIn →</a>
       </div>
     {% endif %}
+
 </div>

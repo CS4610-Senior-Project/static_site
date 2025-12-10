@@ -9,7 +9,7 @@ faculty:
   - name: Dr. Markus Eger
     role: Faculty Contributor
     email: markus.eger@gmail.com
-    image: /assets/img/contributors/default_user.png
+    image: /assets/img/contributors/markus_eger.jpg
     link: 
 
   - name: Dr. Fatemeh Jamshidi
@@ -47,23 +47,23 @@ other_members:
   - name: Jeremy Major
     role: Aerospace Engineering
     email: jamajor@cpp.edu
-    image: /assets/img/contributors/default_user.png
+    image: 
     link: 
 
   - name: John Diaz
     role: Aerospace Engineering
     email: johndiaz@cpp.edu
-    image: /assets/img/contributors/default_user.png
+    image:
     link: 
 
   - name: Enixe Aguilar
     role: Aerospace Engineering
     email: enixeaguilar@cpp.edu
-    image: /assets/img/contributors/default_user.png
+    image:
     link: 
 
   - name: Noah Weldon
     role: Electrical Engineering
     email: noahw1356@gmail.com
-    image: /assets/img/contributors/default_user.png
+    image: 
     link: 
