@@ -1,14 +1,29 @@
-<script type="module">
-  const m = await import('{{ "assets/models/Bevy_2/simple_blocks.js" | relative_url }}');
-await m.default();         // or await m.default('/bevy/simple_blocks_bg.wasm')
-m.init_stress_inbox();
-window.__bevy = m;  
-  // expose for your button
+<style>
 
-</script>
-<script src="{{ 'assets/js/NN3.js' | relative_url }}"></script>
-<div class="text-center my-3">
-  <button class="btn btn-success btn-lg my-4" onclick="runNN3Step2()">Generate Stress Field</button>
+</style>
+<div class="bevy-container">
+  <canvas id="bevy" tabindex="-1"></canvas>
 </div>
 
-<canvas id="bevy" tabindex="-1"></canvas>
+<script type="module">
+  import init, * as wasm from '{{ "assets/models/Bevy_2/beam_final.js" | relative_url }}';
+
+  await init();
+
+  const canvas = document.getElementById("bevy");
+  canvas.style.visibility = "visible"; 
+
+
+  if (wasm.init_stress_inbox) {
+    wasm.init_stress_inbox();
+  }
+
+  window.__bevy = wasm;
+</script>
+
+<script src="{{ 'assets/js/NN3.js' | relative_url }}"></script>
+<div class="text-center my-3">
+  <button class="btn btn-success btn-lg my-4" onclick="runNN3WithForce(2.5)">Generate Stress Field</button>
+</div>
+
+

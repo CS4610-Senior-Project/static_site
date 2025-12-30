@@ -13,7 +13,7 @@ let lastPoints = null;
 const waitBevy = () => new Promise(r => {
   const id = setInterval(() => {
     const b = window.__bevy || window.wasm || window.wasm_bindgen;
-    if (b?.bevy_receive_stress_json) { clearInterval(id); r(b); }
+    if (b?.submit_nn_points) { clearInterval(id); r(b); }
   }, 50);
 });
 
@@ -177,13 +177,21 @@ async function runNN3WithForce(forceValue) {
         
     }
 
-    // 4) Send to Unity
+    // 4) Send to Bevy
+
+    const buf = new Float32Array(points.length * 4);
+    let i = 0;
+    for (const p of points) {
+        buf[i++] = p.x;
+        buf[i++] = p.z;
+        buf[i++] = p.y;
+        buf[i++] = p.stress;
+    }
 
 
-const payload = JSON.stringify(points);
-const bevy = (window.__bevy || window.wasm || window.wasm_bindgen) ?? await waitBevy();
-bevy.bevy_receive_stress_json(payload, null);
-hideLoading(); 
+    const bevy = (window.__bevy || window.wasm || window.wasm_bindgen) ?? await waitBevy();
+    bevy.submit_nn_points(buf);
+    hideLoading(); 
 
 }
 
@@ -218,3 +226,11 @@ async function runNN3Step3() {
 }
 
 
+function dumpNNBuffer(buf) {
+  const blob = new Blob([buf.buffer], { type: "application/octet-stream" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "nn_dump.bin";
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
