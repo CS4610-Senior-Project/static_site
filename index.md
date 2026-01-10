@@ -40,6 +40,8 @@ To train this model, a comprehensive dataset of ANSYS finite element simulations
 <!-- Unity NN3 -->
 {% include Unity_2.html %}
 
+<img src="{{ '/assets/img/psi_gradient.png' | relative_url }}" alt="Von Mises stress (psi) color gradient" style="display:block; max-width:500px; width:100%; height:auto; margin:16px auto;">
+
 # Step 3: Adjusting Applied Force 
 
 The Stress Field in Step 2 was generated under a load contition of 2.5lbs. Now, enter a custom value (in lbs) to see the difference in strain on the beam, given the damage.
