@@ -81,3 +81,33 @@ input[type="number"] { -moz-appearance: textfield; }
   margin-bottom: 0.4rem;   /* small spacing between bullets */
 }
 
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img, video, iframe, canvas, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prevent long strings from forcing width */
+body {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.case-buttons .btn {
+  font-size: clamp(0.85rem, 2.5vw, 1rem);
+}
+
+@media (max-width: 576px) {
+  .case-buttons .btn {
+    font-size: 0.85rem;
+    padding: 4px 10px;
+  }
+}
+
+
+

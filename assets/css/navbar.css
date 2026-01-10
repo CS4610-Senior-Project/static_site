@@ -13,6 +13,7 @@
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
+    flex: wrap;
     align-items: center;
     justify-content: space-between;
 }
@@ -24,6 +25,7 @@
     font-size: 1.3rem;
     font-weight: 500;
     display: flex !important;
+    flex: wrap;
     flex-direction: row !important ;     /* changed from column */
     align-items: center !important;
     gap: 12px;               /* spacing between navbar logo and text */
@@ -38,6 +40,7 @@
 
 .brand-text {
     display: flex;
+    flex: wrap;
     flex-direction: column;
 }
 
@@ -56,6 +59,7 @@
 /* Nav links */
 .navbar-links {
     display: flex;
+    flex: wrap;
     gap: 2rem;
 }
 
@@ -122,10 +126,12 @@
 
     .navbar-links.open {
         display: flex;
+        flex: wrap;
     }
 
     .navbar-toggle {
         display: flex;
+        flex: wrap;
     }
 
     

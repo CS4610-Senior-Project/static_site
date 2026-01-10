@@ -1,10 +1,17 @@
 #bevy {
   width: 100%;
-  max-width: 960px;    /* same as unity container for now */
-  height: 70vh;         
+  max-width: 100% !important;    /* same as unity container for now */
+  height: auto;         
   margin: 0 auto;
   display: block;
   /*border-radius: 12px;*/
   background: #000;     /* avoids white flash */
   outline: none;
+  aspect-ratio: 16 / 9;
+}
+
+#bevy-container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
