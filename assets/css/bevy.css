@@ -10,6 +10,21 @@
   aspect-ratio: 16 / 9;
 }
 
+canvas#bevy {
+  width: 100% !important;
+  max-width: 100% !important;
+  aspect-ratio: 16 / 9;
+  height: auto !important;
+  display: block;
+}
+
+@media (max-width: 576px) {
+  canvas#bevy {
+    height: 35vh !important;
+    aspect-ratio: auto;
+  }
+}
+
 #bevy-container {
   width: 100%;
   max-width: 100%;
