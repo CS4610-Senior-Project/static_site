@@ -1,32 +1,30 @@
-#bevy {
-  width: 100%;
-  max-width: 100% !important;    /* same as unity container for now */
-  height: auto;         
-  margin: 0 auto;
-  display: block;
-  /*border-radius: 12px;*/
-  background: #000;     /* avoids white flash */
-  outline: none;
-  aspect-ratio: 16 / 9;
-}
-
 canvas#bevy {
   width: 100% !important;
   max-width: 100% !important;
-  aspect-ratio: 16 / 9;
-  height: auto !important;
+  height: 100% !important;
+  max-height: 100% !important;
   display: block;
 }
 
 @media (max-width: 576px) {
-  canvas#bevy {
-    height: 35vh !important;
-    aspect-ratio: auto;
+  #bevy-container {
+    height: 35vh;         
+    max-height: 360px;   
+    min-height: 220px;
   }
 }
 
 #bevy-container {
   width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
+  max-width: 960px;      
+  margin: 0 auto;
+  overflow: hidden;     
+  background: #000;
+}
+
+/* Desktop default height */
+#bevy-container {
+  height: 60vh;          
+  max-height: 600px;    
+  min-height: 280px;      
 }
