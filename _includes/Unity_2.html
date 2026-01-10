@@ -1,3 +1,28 @@
+<script>
+  // iOS Safari: Pointer Lock is not supported.
+  // Bevy/winit may call these; make them safe no-ops to avoid crashing.
+  (function () {
+    const doc = document;
+
+    if (!('exitPointerLock' in doc)) {
+      doc.exitPointerLock = function () {};
+    }
+
+    if (!('pointerLockElement' in doc)) {
+      Object.defineProperty(doc, 'pointerLockElement', {
+        configurable: true,
+        get() { return null; }
+      });
+    }
+
+    const proto = HTMLElement && HTMLElement.prototype;
+    if (proto && !('requestPointerLock' in proto)) {
+      proto.requestPointerLock = function () {};
+    }
+  })();
+</script>
+
+
 <script type="module">
   const m = await import('{{ "assets/models/Bevy_2/simple_blocks.js" | relative_url }}');
 await m.default();         // or await m.default('/bevy/simple_blocks_bg.wasm')

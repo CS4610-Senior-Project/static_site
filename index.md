@@ -37,7 +37,7 @@ The second model is designed to predict the von Mises stress at any point within
 
 To train this model, a comprehensive dataset of ANSYS finite element simulations was used. Each simulation represents a different cut location and applied load case, capturing the resulting stress distribution across the beam. The complete dataset consists of 481 simulation files, for a total of nearly 19,630,227 data points
 
-<!-- Unity NN3 -->
+<!-- Unity_2 has been patched to be Bevy -->
 {% include Unity_2.html %}
 
 <img src="{{ '/assets/img/psi_gradient.png' | relative_url }}" alt="Von Mises stress (psi) color gradient" style="display:block; max-width:500px; width:100%; height:auto; margin:16px auto;">
