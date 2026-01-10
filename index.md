@@ -47,37 +47,3 @@ To train this model, a comprehensive dataset of ANSYS finite element simulations
 The Stress Field in Step 2 was generated under a load contition of 2.5lbs. Now, enter a custom value (in lbs) to see the difference in strain on the beam, given the damage.
 
 {% include step_3_varforce.html %}
-
-<script>
-(function () {
-  const box = document.createElement("pre");
-  box.id = "mobile-log";
-  box.style.cssText =
-    "position:fixed;left:0;right:0;bottom:0;max-height:50vh;overflow:auto;z-index:999999;" +
-    "background:rgba(0,0,0,.88);color:#0f0;padding:10px;font:12px/1.4 monospace;white-space:pre-wrap;";
-  box.textContent = "Mobile log:\n";
-  document.addEventListener("DOMContentLoaded", () => document.body.appendChild(box));
-
-  const log = (...a) => { box.textContent += a.join(" ") + "\n"; };
-
-  window.addEventListener("error", (e) =>
-    log("ERROR:", e.message, e.filename || "", "line", e.lineno || "")
-  );
-  window.addEventListener("unhandledrejection", (e) =>
-    log("PROMISE:", (e.reason && e.reason.message) || e.reason)
-  );
-
-  window.addEventListener("load", () => {
-    log("UA:", navigator.userAgent);
-    const c = document.querySelector("canvas#bevy");
-    log("canvas#bevy:", c ? "found" : "NOT FOUND");
-    if (!c) return;
-    const gl2 = c.getContext("webgl2");
-    const gl1 = c.getContext("webgl");
-    log("WebGL:", gl2 ? "webgl2" : gl1 ? "webgl1" : "none");
-    const r = c.getBoundingClientRect();
-    log("CSS size:", Math.round(r.width) + "x" + Math.round(r.height));
-    log("Attr size:", c.width + "x" + c.height);
-  });
-})();
-</script>
